@@ -63,6 +63,26 @@ h2.sec.wide{max-width:26ch}
 .btn-ghost.on-dark{color:var(--sand);border-color:rgba(245,242,235,.32)}
 .btn-ghost.on-dark:hover{border-color:var(--sand);color:var(--white);background:rgba(245,242,235,.06)}
 .btn-sm{padding:.6rem 1.25rem;font-size:.875rem}
+.btn-static{cursor:default}
+.btn-static:hover{transform:none}
+.btn-spark.btn-static:hover{background:var(--spark)}
+
+/* ---------- access gate ---------- */
+.gate-overlay{position:fixed;inset:0;z-index:9999;background:var(--sand);
+  display:flex;align-items:center;justify-content:center;padding:1.5rem}
+.gate-overlay.hidden{display:none}
+body.gated{overflow:hidden}
+.gate-box{max-width:430px;width:100%;text-align:left}
+.gate-logo{margin-bottom:1.8rem}
+.gate-logo svg{height:40px;width:auto}
+.gate-msg{font-size:1.05rem;line-height:1.55;color:#3a3a40;margin-bottom:1.5rem;max-width:36ch}
+.gate-form{display:flex;gap:.6rem;flex-wrap:wrap}
+.gate-input{flex:1;min-width:200px;font-family:var(--font-body);font-size:1rem;
+  padding:.85rem 1.1rem;border:1px solid var(--stone);border-radius:999px;background:var(--white);
+  color:var(--ink);outline:none;transition:border-color .15s var(--ease)}
+.gate-input:focus{border-color:var(--anchor)}
+.gate-err{margin-top:.9rem;font-size:.9rem;color:var(--bad)}
+@media(max-width:480px){ .gate-form .btn{width:100%} }
 
 /* ---------- header ---------- */
 header.nav{position:fixed;top:0;left:0;right:0;z-index:100;
@@ -305,10 +325,40 @@ footer.ft{background:var(--ink);color:var(--sand);padding:clamp(3rem,6vw,4.5rem)
 .ft-col a:hover{color:#fff}
 .ft-url{font-family:var(--font-mono);color:#fff!important;font-size:.9rem}
 .ft-entity{margin-top:.5rem;font-size:.85rem;color:#9d9a92;line-height:1.6}
+.ft-demo-note{color:#cfccc3;font-size:.9rem;line-height:1.55;margin-bottom:.7rem}
+.ft-contact{color:#cfccc3;font-size:.92rem;line-height:1.75}
+.ft-contact b{color:#fff;font-weight:600}
+.ft-contact a{color:#cfccc3;border-bottom:1px solid rgba(245,242,235,.25)}
+.ft-contact a:hover{color:#fff;border-bottom-color:#fff}
 .ft-bottom{margin-top:clamp(2rem,4vw,3rem);padding-top:1.4rem;border-top:1px solid rgba(245,242,235,.1);
   display:flex;flex-wrap:wrap;gap:.8rem 1.5rem;align-items:center;justify-content:space-between}
 .ft-bottom span,.ft-bottom a{font-size:.82rem;color:#8d8a82}
 .ft-bottom a:hover{color:#cfccc3}
+
+/* ============ WHY A LAYER, NOT A CLEANUP ============ */
+.drift-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.15rem;margin-top:clamp(2rem,4vw,3rem)}
+.drift-card{background:var(--white);border:1px solid var(--stone);border-radius:var(--radius-lg);padding:1.5rem 1.5rem}
+.drift-card h3{font-size:1.1rem;letter-spacing:-.015em;margin:0 0 .55rem;color:var(--ink)}
+.drift-card p{font-size:.95rem;line-height:1.58;color:#54545a;margin:0}
+.flowbar-wrap{margin-top:clamp(2rem,4vw,2.8rem);background:var(--ink);border-radius:var(--radius-lg);
+  padding:clamp(1.6rem,3vw,2.2rem) clamp(1.5rem,3vw,2.2rem);color:var(--sand);overflow:hidden}
+.flowbar-label{font-family:var(--font-mono);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:#8d8a82;margin-bottom:1.3rem}
+.flowbar{display:flex;align-items:stretch;gap:0;position:relative}
+.fb-node{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;
+  padding:0 .5rem;opacity:.28;transform:translateY(6px);transition:opacity .5s var(--ease),transform .5s var(--ease);position:relative;z-index:1}
+.fb-node.lit{opacity:1;transform:none}
+.fb-dot{width:13px;height:13px;border-radius:50%;background:#3a3a40;border:2px solid #57575d;
+  transition:background .45s var(--ease),border-color .45s var(--ease),box-shadow .45s var(--ease)}
+.fb-node.lit .fb-dot{background:var(--sand);border-color:var(--sand)}
+.fb-node.is-klints.lit .fb-dot{background:var(--spark);border-color:var(--spark);box-shadow:0 0 0 4px rgba(255,91,61,.18)}
+.fb-name{font-size:.86rem;font-weight:600;margin-top:.85rem;line-height:1.3;color:#e7e4db}
+.fb-node.is-klints .fb-name{color:#fff}
+.fb-sub{display:block;font-family:var(--font-mono);font-size:.68rem;letter-spacing:.04em;color:#8d8a82;margin-top:.35rem}
+.fb-track{position:absolute;top:6px;left:8%;right:8%;height:2px;background:#3a3a40;z-index:0;border-radius:2px}
+.fb-fill{position:absolute;left:0;top:0;height:100%;width:0;background:linear-gradient(90deg,#57575d 0%,var(--spark) 100%);
+  border-radius:2px;transition:width 1.9s var(--ease)}
+.flowbar-cap{margin-top:1.4rem;font-size:.92rem;line-height:1.55;color:#cfccc3;max-width:62ch}
+.flowbar-cap .hl{color:#fff;font-weight:600}
 
 /* ============ PROBLEMS (the reality operators live with) ============ */
 .prob-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem 1.6rem;margin-top:clamp(2rem,4vw,3rem)}
@@ -332,6 +382,13 @@ footer.ft{background:var(--ink);color:var(--sand);padding:clamp(3rem,6vw,4.5rem)
   .tl-item::before{top:3px}
   .icp-grid,.steps-grid{grid-template-columns:1fr}
   .prob-grid{grid-template-columns:1fr;gap:0}
+  .drift-grid{grid-template-columns:1fr}
+  .flowbar{flex-direction:column;gap:1.1rem}
+  .fb-track{display:none}
+  .fb-node{flex-direction:row;justify-content:flex-start;gap:.9rem;text-align:left;padding:0}
+  .fb-name{margin-top:0}
+  .fb-sub{margin-top:.1rem}
+  .fb-body{display:flex;flex-direction:column}
   .ft-grid{grid-template-columns:1fr 1fr}
   .ft-brand{grid-column:1/-1}
   .flow-steps{grid-template-columns:1fr;gap:1.4rem}
@@ -353,6 +410,22 @@ footer.ft{background:var(--ink);color:var(--sand);padding:clamp(3rem,6vw,4.5rem)
 </head>
 <body>
 
+<!-- ============ ACCESS GATE ============ -->
+<div id="gate" class="gate-overlay" role="dialog" aria-modal="true" aria-label="Access required">
+  <div class="gate-box">
+    <div class="gate-logo" aria-hidden="true">
+      <svg viewBox="0 0 750 232" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Klints"><g transform="matrix(1,0,0,1,-225.871722,-166.808789)"><g transform="matrix(0.640149,0,0,0.640149,104.911391,135.234006)"><g transform="matrix(0.560899,0,0,0.467458,74.533056,26.521793)"><rect x="204" y="113.307" width="108" height="655.693" style="fill:rgb(22,22,26);"/></g><g transform="matrix(0.137362,-0.161775,0.140883,0.119623,-151.373935,153.866606)"><path d="M2054,2156L700,2156L960.248,1906.495L1868.049,1903.842L2054,2156Z" style="fill:rgb(22,22,26);"/></g><g transform="matrix(-0.298901,-0.426961,0.37473,-0.262335,6.177157,1054.232039)"><path d="M923,1619L570.412,1618.246L626.947,1525.855L902.905,1524.273L923,1619Z" style="fill:rgb(22,22,26);"/></g><g transform="matrix(0.000456,0.661949,-0.577699,0.000398,1542.864483,-225.609534)"><path d="M922.304,1626.92L570.686,1626.921L615.46,1537.918L922.304,1537.92L922.304,1626.92Z" style="fill:rgb(22,22,26);"/></g><g transform="matrix(0.462126,0,0,0.462126,439.117409,385.996793)"><g transform="matrix(934.165337,0,0,934.165337,0,0)"><path d="M0.198,-0C0.159,-0 0.128,-0.01 0.105,-0.03C0.082,-0.05 0.07,-0.082 0.07,-0.126L0.07,-0.71L0.198,-0.71L0.198,-0.139C0.198,-0.126 0.202,-0.115 0.209,-0.109C0.216,-0.102 0.225,-0.099 0.238,-0.099L0.277,-0.099L0.277,-0L0.198,-0Z" style="fill:rgb(22,22,26);fill-rule:nonzero;"/></g></g><g transform="matrix(0.26535,0,0,0.26535,247.445965,-206.138841)"><circle cx="1436.5" cy="1162.5" r="84.5" style="fill:rgb(255,91,61);"/></g><g transform="matrix(0.457581,0,0,0.457581,922.993967,385.996793)"><g transform="matrix(934.165337,0,0,934.165337,0,0)"><path d="M0.284,-0C0.231,-0 0.192,-0.012 0.167,-0.037C0.141,-0.061 0.129,-0.1 0.129,-0.153L0.129,-0.659L0.257,-0.659L0.257,-0.165C0.257,-0.14 0.262,-0.123 0.273,-0.113C0.284,-0.104 0.301,-0.099 0.323,-0.099L0.398,-0.099L0.398,-0L0.284,-0ZM0.045,-0.435L0.045,-0.534L0.398,-0.534L0.398,-0.435L0.045,-0.435Z" style="fill:rgb(22,22,26);fill-rule:nonzero;"/></g></g><g transform="matrix(0.457581,0,0,0.457581,1121.471605,380.867311)"><g transform="matrix(934.165337,0,0,934.165337,0,0)"><path d="M0.287,0.012C0.235,0.012 0.191,0.004 0.155,-0.011C0.119,-0.027 0.091,-0.048 0.072,-0.075C0.053,-0.102 0.042,-0.133 0.039,-0.168L0.17,-0.174C0.175,-0.146 0.186,-0.124 0.205,-0.109C0.224,-0.093 0.251,-0.086 0.288,-0.086C0.318,-0.086 0.341,-0.09 0.358,-0.1C0.375,-0.11 0.384,-0.125 0.384,-0.146C0.384,-0.158 0.381,-0.168 0.375,-0.176C0.369,-0.184 0.358,-0.191 0.341,-0.197C0.324,-0.203 0.3,-0.209 0.267,-0.215C0.212,-0.224 0.169,-0.236 0.138,-0.249C0.107,-0.263 0.085,-0.28 0.072,-0.301C0.059,-0.322 0.052,-0.347 0.052,-0.378C0.052,-0.428 0.071,-0.468 0.109,-0.499C0.148,-0.53 0.204,-0.546 0.278,-0.546C0.326,-0.546 0.366,-0.538 0.399,-0.522C0.432,-0.506 0.457,-0.485 0.476,-0.458C0.494,-0.431 0.506,-0.401 0.51,-0.366L0.381,-0.36C0.378,-0.378 0.372,-0.394 0.363,-0.407C0.354,-0.42 0.342,-0.43 0.328,-0.438C0.314,-0.445 0.296,-0.448 0.276,-0.448C0.246,-0.448 0.223,-0.442 0.208,-0.43C0.192,-0.418 0.185,-0.402 0.185,-0.382C0.185,-0.368 0.188,-0.356 0.195,-0.347C0.202,-0.338 0.214,-0.33 0.23,-0.324C0.246,-0.318 0.267,-0.313 0.294,-0.309C0.35,-0.301 0.394,-0.289 0.427,-0.276C0.459,-0.262 0.482,-0.244 0.496,-0.224C0.51,-0.203 0.516,-0.177 0.516,-0.148C0.516,-0.114 0.507,-0.085 0.488,-0.061C0.468,-0.037 0.442,-0.019 0.407,-0.007C0.373,0.006 0.333,0.012 0.287,0.012Z" style="fill:rgb(22,22,26);fill-rule:nonzero;"/></g></g><g transform="matrix(0.457581,0,0,0.457581,670.704096,385.719959)"><path d="M65.771,0L60.771,-510.054L172.599,-444.844L171.615,-356.909L164.048,-364.704C169.274,-399.453 179.608,-427.446 195.051,-448.684C210.494,-469.922 229.52,-485.459 252.13,-495.297C274.739,-505.135 299.434,-510.054 326.213,-510.054C362.957,-510.054 393.877,-502.021 418.973,-485.956C444.069,-469.89 463.127,-447.689 476.147,-419.353C489.167,-391.016 495.677,-358.165 495.677,-320.798L495.677,0L376.089,0L376.089,-282.308C376.089,-310.333 373.382,-334.03 367.966,-353.399C362.551,-372.768 353.492,-387.528 340.788,-397.677C328.084,-407.826 311.019,-412.901 289.591,-412.901C257.577,-412.901 232.198,-401.723 213.457,-379.366C194.715,-357.009 185.344,-324.657 185.344,-282.308L185.344,0L65.771,0Z" style="fill:rgb(22,22,26);fill-rule:nonzero;"/></g></g></g></svg>
+    </div>
+    <span class="eyebrow" style="display:block;margin-bottom:.6rem">Confidential · pre-launch</span>
+    <p class="gate-msg">This page is shared privately ahead of launch. Please enter the access password.</p>
+    <div class="gate-form">
+      <input type="password" id="gateInput" class="gate-input" placeholder="Access password" autocomplete="off" aria-label="Access password" autofocus>
+      <button id="gateBtn" class="btn btn-anchor">Enter</button>
+    </div>
+    <p class="gate-err" id="gateErr" hidden>That password isn't right — please try again.</p>
+  </div>
+</div>
+
 <!-- ============ HEADER (Element 2) ============ -->
 <header class="nav" id="nav">
   <div class="nav-inner">
@@ -369,7 +442,7 @@ footer.ft{background:var(--ink);color:var(--sand);padding:clamp(3rem,6vw,4.5rem)
         <a href="#roadmap">Roadmap</a>
       </nav>
       <div class="nav-cta">
-        <a class="btn btn-spark btn-sm" href="https://klints-ai.vercel.app" target="_blank" rel="noopener">See the live demo <span class="arw">→</span></a>
+        <span class="btn btn-spark btn-sm btn-static">Guided demo on request</span>
       </div>
     </div>
   </div>
@@ -392,7 +465,7 @@ footer.ft{background:var(--ink);color:var(--sand);padding:clamp(3rem,6vw,4.5rem)
           <h1>Ecommerce data governance for AI&#8209;powered marketing platforms</h1>
           <p class="lead">Klints is a neutral data governance layer that sits above a brand's whole stack. It validates that the data is genuinely lifecycle&#8209;ready <em>before</em> anything is activated — then hands the Manago.ai agent a governance&#8209;validated brief to build and run.</p>
           <div class="hero-ctas">
-            <a class="btn btn-spark" href="https://klints-ai.vercel.app" target="_blank" rel="noopener">See the live demo <span class="arw">→</span></a>
+            <span class="btn btn-spark btn-static">Guided demo on request</span>
             <a class="btn btn-ghost" href="#fit">How we fit together</a>
           </div>
           <div class="hero-meta">
@@ -607,6 +680,64 @@ footer.ft{background:var(--ink);color:var(--sand);padding:clamp(3rem,6vw,4.5rem)
     </div>
   </section>
 
+  <!-- ============ WHY A LAYER, NOT A CLEANUP ============ -->
+  <section class="bg-sand" id="why-layer">
+    <div class="container">
+      <div class="reveal" style="max-width:56rem">
+        <span class="eyebrow">Why a layer, not a cleanup</span>
+        <h2 class="sec wide">Data isn't cleaned once. It drifts — so governance has to be live.</h2>
+      </div>
+
+      <div class="drift-grid">
+        <article class="drift-card reveal">
+          <h3>Clean today, broken in two months</h3>
+          <p>A one-time data fix at onboarding is accurate the day it's done. Two months of live trading later — new events, new integrations, new edge cases — and the same gaps quietly reopen.</p>
+        </article>
+        <article class="drift-card reveal d1">
+          <h3>Klints runs on live data</h3>
+          <p>It connects to the brand's stack and reads the real, current state continuously — not a snapshot, not an export. The Data Consistency Score reflects the stack right now, and moves as the data moves.</p>
+        </article>
+        <article class="drift-card reveal d2">
+          <h3>A cleanup is a moment. Governance is a posture.</h3>
+          <p>Cleaning data once solves yesterday. A neutral layer that watches integrity continuously is what keeps every workflow the agent builds standing on data that's still true.</p>
+        </article>
+      </div>
+
+      <!-- animated real-time data-flow bar (answers "how does data get in?") -->
+      <div class="flowbar-wrap reveal d1" id="flowbarWrap">
+        <div class="flowbar-label">How the data gets in · real-time</div>
+        <div class="flowbar" id="flowbar">
+          <div class="fb-track"><div class="fb-fill" id="fbFill"></div></div>
+          <div class="fb-node" data-fb="0">
+            <span class="fb-dot"></span>
+            <div class="fb-body"><span class="fb-name">Ecommerce platform</span><span class="fb-sub">primary source</span></div>
+          </div>
+          <div class="fb-node" data-fb="1">
+            <span class="fb-dot"></span>
+            <div class="fb-body"><span class="fb-name">Margin / ERP source</span><span class="fb-sub">economics</span></div>
+          </div>
+          <div class="fb-node" data-fb="2">
+            <span class="fb-dot"></span>
+            <div class="fb-body"><span class="fb-name">Analytics &amp; ad signals</span><span class="fb-sub">behaviour</span></div>
+          </div>
+          <div class="fb-node is-klints" data-fb="3">
+            <span class="fb-dot"></span>
+            <div class="fb-body"><span class="fb-name">Klints · live read</span><span class="fb-sub">continuous</span></div>
+          </div>
+          <div class="fb-node" data-fb="4">
+            <span class="fb-dot"></span>
+            <div class="fb-body"><span class="fb-name">Data Consistency Score</span><span class="fb-sub">always current</span></div>
+          </div>
+        </div>
+        <p class="flowbar-cap">Real-time connections across the stack — ecommerce platform first, then a margin/ERP source, then analytics and ad signals. <span class="hl">Read continuously, never as a one-off import.</span></p>
+      </div>
+
+      <div class="emph-wrap reveal" style="margin-top:clamp(2.2rem,4vw,3rem)">
+        <p class="emph">That's the difference between <span class="hl">cleaning data and governing it</span>.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ HOW WE FIT TOGETHER (Slide 5) — animated flow ============ -->
   <section class="bg-white" id="fit">
     <div class="container">
@@ -734,7 +865,7 @@ footer.ft{background:var(--ink);color:var(--sand);padding:clamp(3rem,6vw,4.5rem)
         <h2>Let's walk through the full governance loop</h2>
         <p>Score 67, the blocking issue, the human-approved fix, the assembled workflow, the QA gates, and the hand-off to Manago.ai — live, end to end. I'll take you through it.</p>
         <div class="hero-ctas">
-          <a class="btn btn-spark" href="https://klints-ai.vercel.app" target="_blank" rel="noopener">Open the live demo <span class="arw">→</span></a>
+          <span class="btn btn-spark btn-static">Guided demo on request</span>
           <a class="btn btn-ghost on-dark" href="#fit">Recap how we fit</a>
         </div>
       </div>
@@ -837,7 +968,7 @@ footer.ft{background:var(--ink);color:var(--sand);padding:clamp(3rem,6vw,4.5rem)
       <div class="reveal" style="text-align:center;margin-top:clamp(2.6rem,5vw,3.6rem)">
         <p class="emph" style="color:#cfccc3;margin:0 auto;max-width:40ch">Prove the value first — <span style="color:#fff">the commercial structure can reflect what we demonstrate together.</span></p>
         <div class="hero-ctas" style="justify-content:center;margin-top:2rem">
-          <a class="btn btn-spark" href="https://klints-ai.vercel.app" target="_blank" rel="noopener">See the live demo <span class="arw">→</span></a>
+          <span class="btn btn-spark btn-static">Guided demo on request</span>
         </div>
       </div>
     </div>
@@ -857,13 +988,19 @@ footer.ft{background:var(--ink);color:var(--sand);padding:clamp(3rem,6vw,4.5rem)
       <div class="ft-col">
         <h4>Navigate</h4>
         <a href="#diagnosis">The shared diagnosis</a>
+        <a href="#problems">10 problems</a>
         <a href="#what">What Klints is</a>
+        <a href="#why-layer">Why a layer, not a cleanup</a>
         <a href="#fit">How we fit together</a>
         <a href="#roadmap">Roadmap</a>
-        <a href="https://klints-ai.vercel.app" target="_blank" rel="noopener">Live demo ↗</a>
       </div>
       <div class="ft-col">
-        <h4>Company</h4>
+        <h4>See the demo</h4>
+        <p class="ft-demo-note">The demo is a guided walkthrough. To see it, contact me directly:</p>
+        <p class="ft-contact"><b>Jiri Sefler</b><br>
+        WhatsApp: <a href="https://wa.me/420775410364">+420 775 410 364</a><br>
+        Email: <a href="mailto:director@comenius.agency">director@comenius.agency</a></p>
+        <h4 style="margin-top:1.6rem">Company</h4>
         <a class="ft-url" href="https://klints.ai" target="_blank" rel="noopener">klints.ai</a>
         <p class="ft-entity">COMENIUS Agency s.r.o.<br>Jaurisova 515/4, 140 00<br>Praha 4 – Michle, Czech Republic<br>IČO 06603360</p>
       </div>
@@ -874,6 +1011,41 @@ footer.ft{background:var(--ink);color:var(--sand);padding:clamp(3rem,6vw,4.5rem)
     </div>
   </div>
 </footer>
+
+<script>
+/* ---- access gate (client-side, pre-launch privacy) ---- */
+(function(){
+  var PASS = 'manago_ai_2026';
+  var KEY = 'klints_manago_access';
+  var gate = document.getElementById('gate');
+  var input = document.getElementById('gateInput');
+  var btn = document.getElementById('gateBtn');
+  var err = document.getElementById('gateErr');
+
+  function unlock(){
+    gate.classList.add('hidden');
+    document.body.classList.remove('gated');
+    try{ sessionStorage.setItem(KEY,'1'); }catch(e){}
+  }
+  function lock(){
+    document.body.classList.add('gated');
+    setTimeout(function(){ if(input) input.focus(); }, 50);
+  }
+  function check(){
+    if((input.value||'').trim() === PASS){ unlock(); }
+    else { err.hidden = false; input.value=''; input.focus(); }
+  }
+
+  var already = false;
+  try{ already = sessionStorage.getItem(KEY)==='1'; }catch(e){}
+  if(already){ gate.classList.add('hidden'); }
+  else {
+    lock();
+    btn.addEventListener('click', check);
+    input.addEventListener('keydown', function(e){ if(e.key==='Enter'){ check(); } });
+  }
+})();
+</script>
 
 <script>
 (function(){
@@ -973,6 +1145,28 @@ footer.ft{background:var(--ink);color:var(--sand);padding:clamp(3rem,6vw,4.5rem)
     es.forEach(function(e){ if(e.isIntersecting) runFlow(); });
   }, {threshold:.35});
   if(flow) fio.observe(flow);
+
+  /* ---- animated data-flow bar (why-a-layer section) ---- */
+  var fbWrap = document.getElementById('flowbarWrap');
+  var fbFill = document.getElementById('fbFill');
+  var fbNodes = document.querySelectorAll('#flowbar .fb-node');
+  var fbFired = false;
+  function runFlowbar(){
+    if(fbFired) return; fbFired = true;
+    if(reduce){
+      fbNodes.forEach(function(n){ n.classList.add('lit'); });
+      if(fbFill) fbFill.style.width = '100%';
+      return;
+    }
+    if(fbFill) fbFill.style.width = '100%';
+    fbNodes.forEach(function(n, i){
+      setTimeout(function(){ n.classList.add('lit'); }, 200 + i*320);
+    });
+  }
+  var fbio = new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting) runFlowbar(); });
+  }, {threshold:.4});
+  if(fbWrap) fbio.observe(fbWrap);
 })();
 </script>
 </body>
