@@ -310,7 +310,15 @@ footer.ft{background:var(--ink);color:var(--sand);padding:clamp(3rem,6vw,4.5rem)
 .ft-bottom span,.ft-bottom a{font-size:.82rem;color:#8d8a82}
 .ft-bottom a:hover{color:#cfccc3}
 
-/* ============ responsive ============ */
+/* ============ PROBLEMS (the reality operators live with) ============ */
+.prob-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem 1.6rem;margin-top:clamp(2rem,4vw,3rem)}
+.prob{display:flex;gap:1.1rem;padding:1.35rem 0;border-top:1px solid var(--stone)}
+.prob-n{font-family:var(--font-mono);font-weight:500;font-size:.95rem;color:var(--spark);
+  flex:none;width:2ch;line-height:1.5;padding-top:.1rem}
+.prob-body{flex:1}
+.prob-body h3{font-size:1.06rem;line-height:1.34;letter-spacing:-.01em;margin:0 0 .4rem;color:var(--ink)}
+.prob-body p{font-size:.95rem;line-height:1.55;color:#57575d;margin:0}
+.prob-close{margin-top:clamp(2.2rem,4vw,3rem)}
 @media(max-width:920px){
   .hero-grid{grid-template-columns:1fr;gap:2.5rem}
   .hero-card{max-width:420px}
@@ -323,6 +331,7 @@ footer.ft{background:var(--ink);color:var(--sand);padding:clamp(3rem,6vw,4.5rem)
   .tl-item{padding-left:1.7rem;padding-top:.2rem}
   .tl-item::before{top:3px}
   .icp-grid,.steps-grid{grid-template-columns:1fr}
+  .prob-grid{grid-template-columns:1fr;gap:0}
   .ft-grid{grid-template-columns:1fr 1fr}
   .ft-brand{grid-column:1/-1}
   .flow-steps{grid-template-columns:1fr;gap:1.4rem}
@@ -354,6 +363,7 @@ footer.ft{background:var(--ink);color:var(--sand);padding:clamp(3rem,6vw,4.5rem)
     <div class="nav-right">
       <nav class="nav-links">
         <a href="#diagnosis">Diagnosis</a>
+        <a href="#problems">10 problems</a>
         <a href="#what">What Klints is</a>
         <a href="#fit">How we fit</a>
         <a href="#roadmap">Roadmap</a>
@@ -472,6 +482,94 @@ footer.ft{background:var(--ink);color:var(--sand);padding:clamp(3rem,6vw,4.5rem)
 
       <div class="emph-wrap reveal">
         <p class="emph">The more capable the agent becomes, the higher the cost of acting on <span class="hl">data that isn't ready</span>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ THE REALITY OPERATORS LIVE WITH (10 problems) ============ -->
+  <section class="bg-sand" id="problems">
+    <div class="container">
+      <div class="reveal" style="max-width:56rem">
+        <span class="eyebrow">The reality operators live with</span>
+        <h2 class="sec wide">Ten problems every lifecycle team runs into — and can't cleanly diagnose</h2>
+        <p class="lead" style="margin-top:1.3rem">Across the research, the same patterns surface again and again. Not edge cases — the norm for brands sending more than ever on stacks they can't fully govern.</p>
+      </div>
+
+      <div class="prob-grid">
+        <div class="prob reveal">
+          <span class="prob-n">01</span>
+          <div class="prob-body">
+            <h3>Broken tracking quietly kills automations before a single word of copy matters.</h3>
+            <p>Missing events, consent gaps, server-side blind spots — the trigger never fires, and half the eligible audience is never even reached.</p>
+          </div>
+        </div>
+        <div class="prob reveal">
+          <span class="prob-n">02</span>
+          <div class="prob-body">
+            <h3>Fragmented identity means the same customer is treated as several strangers.</h3>
+            <p>Profiles don't stitch, so loyal buyers get welcome-for-newcomers and the system can't see who it's actually talking to.</p>
+          </div>
+        </div>
+        <div class="prob reveal">
+          <span class="prob-n">03</span>
+          <div class="prob-body">
+            <h3>Most brands have plenty of flows. Almost none have flow governance.</h3>
+            <p>Journeys get launched and never reviewed, multiple flows fire on the same trigger, and campaign logic collides — with no layer deciding what should run.</p>
+          </div>
+        </div>
+        <div class="prob reveal">
+          <span class="prob-n">04</span>
+          <div class="prob-body">
+            <h3>Workflows are built around events, not decisions — so they plateau.</h3>
+            <p>Reminder-style sequences add noise instead of revenue, because nobody validated whether the flow creates a genuinely new customer decision worth sending.</p>
+          </div>
+        </div>
+        <div class="prob reveal">
+          <span class="prob-n">05</span>
+          <div class="prob-body">
+            <h3>When something underperforms, no one can tell <em>why</em>.</h3>
+            <p>Is it the data, the segment, the trigger, the timing, a suppression conflict, or a definition mismatch? Teams add complexity before they've diagnosed the root cause.</p>
+          </div>
+        </div>
+        <div class="prob reveal">
+          <span class="prob-n">06</span>
+          <div class="prob-body">
+            <h3>Discount-led welcomes win the first order and quietly erode margin for the rest of the relationship.</h3>
+            <p>Front-end acquisition choices set a lifecycle base the backend can never fully recover.</p>
+          </div>
+        </div>
+        <div class="prob reveal">
+          <span class="prob-n">07</span>
+          <div class="prob-body">
+            <h3>Moving data into a warehouse doesn't decide anything.</h3>
+            <p>Even with the plumbing solved, the hard question stays open: given this customer's state right now, what should happen next — and what should be suppressed?</p>
+          </div>
+        </div>
+        <div class="prob reveal">
+          <span class="prob-n">08</span>
+          <div class="prob-body">
+            <h3>Faster generation just builds the wrong things faster.</h3>
+            <p>As production gets cheaper, more flows and campaigns ship — but without clean data, suppression logic, and QA, volume scales the mistakes, not the revenue.</p>
+          </div>
+        </div>
+        <div class="prob reveal">
+          <span class="prob-n">09</span>
+          <div class="prob-body">
+            <h3>Attribution is trusted right up until a number has to be defended.</h3>
+            <p>Reported revenue and real incremental impact drift apart, and teams optimize toward whatever is visible rather than what is actually valuable.</p>
+          </div>
+        </div>
+        <div class="prob reveal">
+          <span class="prob-n">10</span>
+          <div class="prob-body">
+            <h3>Operators are buried — and optimize the visible, not the valuable.</h3>
+            <p>Long hours in the platform, the painful build-test-wait-restart loop, and no prioritization system, so the highest-impact fix keeps getting deferred.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="emph-wrap reveal prob-close">
+        <p class="emph">None of these are advanced tactics. They're <span class="hl">basic decisions no one is governing</span>.</p>
       </div>
     </div>
   </section>
